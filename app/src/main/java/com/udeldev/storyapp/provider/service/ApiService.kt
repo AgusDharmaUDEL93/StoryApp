@@ -1,8 +1,6 @@
 package com.udeldev.storyapp.provider.service
 
-import com.udeldev.storyapp.model.response.AllStoryResponse
-import com.udeldev.storyapp.model.response.BasicResponse
-import com.udeldev.storyapp.model.response.LoginResponse
+import com.udeldev.storyapp.model.response.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -10,6 +8,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
     @FormUrlEncoded
@@ -30,4 +29,7 @@ interface ApiService {
 
     @GET("stories")
     fun getAllStory ( ) : Call<AllStoryResponse>
+
+    @GET("stories/{id}")
+    fun getDetailStory (@Path("id") id :String) : Call<DetailStoryResponse>
 }

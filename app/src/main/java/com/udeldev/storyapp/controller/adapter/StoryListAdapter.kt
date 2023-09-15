@@ -1,6 +1,7 @@
 package com.udeldev.storyapp.controller.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.udeldev.storyapp.R
 import com.udeldev.storyapp.model.response.ListStoryItem
 import com.bumptech.glide.Glide
+import com.udeldev.storyapp.view.detail.DetailActivity
 
 
 class StoryListAdapter : RecyclerView.Adapter<StoryListAdapter.StoryListViewHolder>() {
@@ -41,6 +43,11 @@ class StoryListAdapter : RecyclerView.Adapter<StoryListAdapter.StoryListViewHold
         Glide.with(holder.itemView.context)
             .load(_storyList?.get(position)?.photoUrl ?: "https://i.stack.imgur.com/l60Hf.png")
             .into(holder.imageStoryList)
+        holder.itemView.setOnClickListener {
+            val moveIntent = Intent(holder.itemView.context, DetailActivity::class.java)
+            moveIntent.putExtra(DetailActivity.EXTRA_ID, _storyList?.get(position)?.id)
+            holder.itemView.context.startActivity(moveIntent)
+        }
     }
 
 }
