@@ -1,6 +1,5 @@
 package com.udeldev.storyapp.provider.config
 
-import android.util.Log
 import com.udeldev.storyapp.provider.service.ApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

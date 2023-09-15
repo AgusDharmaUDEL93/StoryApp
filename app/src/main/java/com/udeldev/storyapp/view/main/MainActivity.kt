@@ -3,7 +3,6 @@ package com.udeldev.storyapp.view.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Binding
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,6 +15,7 @@ import com.udeldev.storyapp.helper.TokenPreference
 import com.udeldev.storyapp.helper.dataStore
 import com.udeldev.storyapp.helper.factory.TokenFactory
 import com.udeldev.storyapp.model.response.ListStoryItem
+import com.udeldev.storyapp.view.add.AddActivity
 import com.udeldev.storyapp.view.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -64,6 +64,10 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getAllDataStory()
         mainViewModel.allStoryResponse.observe(this){
             setStoryListData(it.listStory)
+        }
+
+        activityMainBinding.buttonMainAdd.setOnClickListener {
+            startActivity(Intent(this, AddActivity::class.java))
         }
     }
 

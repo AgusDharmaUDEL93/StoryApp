@@ -5,21 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
-import com.udeldev.storyapp.R
 import com.udeldev.storyapp.databinding.ActivityLoginBinding
-import com.udeldev.storyapp.databinding.ActivityWelcomeBinding
 import com.udeldev.storyapp.helper.TokenPreference
 import com.udeldev.storyapp.helper.dataStore
 import com.udeldev.storyapp.helper.factory.TokenFactory
 import com.udeldev.storyapp.view.main.MainActivity
-import com.udeldev.storyapp.view.main.MainViewModel
 import com.udeldev.storyapp.view.welcome.WelcomeActivity
 
 class LoginActivity : AppCompatActivity() {

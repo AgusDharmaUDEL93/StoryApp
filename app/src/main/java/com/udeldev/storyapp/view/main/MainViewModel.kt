@@ -4,10 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.udeldev.storyapp.helper.TokenPreference
 import com.udeldev.storyapp.model.response.AllStoryResponse
-import com.udeldev.storyapp.provider.config.ConfigAuth
 import com.udeldev.storyapp.provider.config.ConfigData
-import com.udeldev.storyapp.view.login.LoginViewModel
-import com.udeldev.storyapp.view.register.RegisterViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

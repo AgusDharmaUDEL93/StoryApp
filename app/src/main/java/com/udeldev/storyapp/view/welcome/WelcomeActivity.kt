@@ -3,7 +3,6 @@ package com.udeldev.storyapp.view.welcome
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.udeldev.storyapp.R
 import com.udeldev.storyapp.databinding.ActivityWelcomeBinding
 import com.udeldev.storyapp.view.login.LoginActivity
 import com.udeldev.storyapp.view.register.RegisterActivity

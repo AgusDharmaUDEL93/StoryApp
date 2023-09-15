@@ -49,5 +49,4 @@ class StoryListAdapter : RecyclerView.Adapter<StoryListAdapter.StoryListViewHold
             holder.itemView.context.startActivity(moveIntent)
         }
     }
-
 }

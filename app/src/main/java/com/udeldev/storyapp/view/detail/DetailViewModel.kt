@@ -8,7 +8,6 @@ import com.udeldev.storyapp.helper.TokenPreference
 import com.udeldev.storyapp.model.response.DetailStoryResponse
 import com.udeldev.storyapp.model.response.ListStoryItem
 import com.udeldev.storyapp.provider.config.ConfigData
-import com.udeldev.storyapp.view.main.MainViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import retrofit2.Call
