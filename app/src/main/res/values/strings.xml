@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Story App</string>
+
+    <string name="login_title">Sudah siap untuk upgrade skill?</string>
+    <string name="login_subtitle">Masukkan dulu datamu ya</string>
+    <string name="login">Login</string>
+
+    <string name="register_title">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="register">Register</string>
+
+    <string name="welcome_title">Selamat datang di Dicoding!</string>
+    <string name="welcome_body">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>
+
+    <string name="confirm_password">Confirm Password</string>
+
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="logout">Logout</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+</resources>
