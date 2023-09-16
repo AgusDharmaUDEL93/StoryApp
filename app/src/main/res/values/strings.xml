@@ -20,4 +20,7 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="created_at">15-08-2003</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="submit">Submit</string>
 </resources>
