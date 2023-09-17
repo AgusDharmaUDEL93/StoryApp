@@ -1,25 +1,27 @@
 <resources>
     <string name="app_name">Story App</string>
 
-    <string name="login_title">Sudah siap untuk upgrade skill?</string>
-    <string name="login_subtitle">Masukkan dulu datamu ya</string>
+    <string name="login_title">Are you ready to share your story?</string>
+    <string name="login_subtitle">Enter your data first</string>
     <string name="login">Login</string>
 
-    <string name="register_title">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="register_title">Complete your data below</string>
     <string name="register">Register</string>
 
-    <string name="welcome_title">Selamat datang di Dicoding!</string>
-    <string name="welcome_body">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>
+    <string name="welcome_title">Welcome to StoryApp!</string>
+    <string name="welcome_body">Come on, share your stories about your learning experiences in the IT field such as Android, iOS, Machine Learning, Cloud, Front-End, Back-End, and other IT fields.</string>
 
-    <string name="confirm_password">Confirm Password</string>
 
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="logout">Logout</string>
+
+    <string name="languange">Languange</string>
+
     <string name="title">Title</string>
     <string name="description">Description</string>
-    <string name="created_at">15-08-2003</string>
+    <string name="created_at">15–08–2003</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="submit">Submit</string>

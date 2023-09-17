@@ -3,6 +3,8 @@ package com.udeldev.storyapp.view.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
@@ -31,23 +33,46 @@ class RegisterActivity : AppCompatActivity() {
             showLoading(it)
         }
 
+        activityRegisterBinding.editRegisterPassword.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                activityRegisterBinding.editRegisterPasswordLayout.error = validPassword(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+
+        })
+
+        activityRegisterBinding.editRegisterEmail.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                activityRegisterBinding.editRegisterEmailLayout.error = validEmail(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+
 
 
         activityRegisterBinding.buttonRegister.setOnClickListener {
-            activityRegisterBinding.editRegisterEmailLayout.helperText =
+            activityRegisterBinding.editRegisterEmailLayout.error =
                 validEmail(activityRegisterBinding.editRegisterEmail.text.toString())
-            activityRegisterBinding.editRegisterPasswordLayout.helperText =
+            activityRegisterBinding.editRegisterPasswordLayout.error =
                 validPassword(activityRegisterBinding.editRegisterPassword.text.toString())
 
-            if (activityRegisterBinding.editRegisterEmailLayout.helperText != null || activityRegisterBinding.editRegisterPasswordLayout.helperText != null){
+            if (activityRegisterBinding.editRegisterEmailLayout.error != null || activityRegisterBinding.editRegisterPasswordLayout.error != null){
                 Toast.makeText(this, "Please insert the valid data", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             registerViewModel.regisUser(
                 activityRegisterBinding.editRegisterName.text.toString(),
-                activityRegisterBinding.editRegisterEmail.toString(),
-                activityRegisterBinding.editRegisterPassword.toString(),
+                activityRegisterBinding.editRegisterEmail.text.toString(),
+                activityRegisterBinding.editRegisterPassword.text.toString(),
             )
 
             registerViewModel.isError.observe(this){

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Story App</string>
+
+    <string name="login_title">Sudah siap untuk sharing ceritamu?</string>
+    <string name="login_subtitle">Masukkan dulu datamu ya</string>
+    <string name="login">Masuk</string>
+
+    <string name="register_title">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="register">Daftar</string>
+
+    <string name="welcome_title">Selamat datang di StoryApp!</string>
+    <string name="welcome_body">Ayo sharing cerita kalian tentang pengalaman belajar kalian dalam bidang IT seperti Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya.</string>
+
+
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="logout">Keluar</string>
+
+    <string name="languange">Bahasa</string>
+
+    <string name="title">Judul</string>
+    <string name="description">Deskripsi</string>
+    <string name="created_at">15–08–2003</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="submit">Kirim</string>
+</resources>

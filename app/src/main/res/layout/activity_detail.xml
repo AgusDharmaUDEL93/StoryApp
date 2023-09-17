@@ -22,6 +22,7 @@
             android:id="@+id/image_detail_story"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:transitionName="image_detail_story"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,6 +40,7 @@
 
     <TextView
             android:id="@+id/text_detail_title"
+            android:transitionName="text_detail_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25sp"
@@ -52,6 +54,7 @@
 
     <TextView
             android:id="@+id/text_detail_desc"
+            android:transitionName="text_detail_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

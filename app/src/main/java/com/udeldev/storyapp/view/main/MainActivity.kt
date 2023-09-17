@@ -3,6 +3,7 @@ package com.udeldev.storyapp.view.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,21 +23,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var activityMainBinding: ActivityMainBinding
-    private lateinit var adapter : StoryListAdapter
+    private lateinit var adapter: StoryListAdapter
 
-    private fun initComponent (){
+    private fun initComponent() {
         mainViewModel = obtainViewModel()
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_logout, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.menu_dropdown_logout -> mainViewModel.logoutSession()
+        when (item.itemId) {
+            R.id.menu_main_logout -> mainViewModel.logoutSession()
+            R.id.menu_main_setting -> startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
         }
         return super.onOptionsItemSelected(item)
     }
@@ -50,38 +52,39 @@ class MainActivity : AppCompatActivity() {
         adapter = StoryListAdapter()
         activityMainBinding.recyclerMainStories.adapter = adapter
 
-        mainViewModel.getSession().observe(this){ token ->
-            if (token.isEmpty()){
+        mainViewModel.getSession().observe(this) { token ->
+            if (token.isEmpty()) {
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()
             }
         }
 
-        mainViewModel.isLoading.observe(this){
+        mainViewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
-        mainViewModel.getAllDataStory()
-        mainViewModel.allStoryResponse.observe(this){
+        mainViewModel.allStoryResponse.observe(this) {
             setStoryListData(it.listStory)
         }
 
         activityMainBinding.buttonMainAdd.setOnClickListener {
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(Intent(this, AddActivity::class.java))
+            finish()
         }
     }
 
-    private fun showLoading(isLoading:Boolean){
+    private fun showLoading(isLoading: Boolean) {
         activityMainBinding.progressMain.visibility = if (isLoading) View.VISIBLE else View.GONE
 
     }
 
-    private fun setStoryListData (storyList: List<ListStoryItem?>?){
+    private fun setStoryListData(storyList: List<ListStoryItem?>?) {
         adapter.setStoryList(storyList)
         activityMainBinding.recyclerMainStories.adapter = adapter
     }
 
-    private fun obtainViewModel() : MainViewModel{
+    private fun obtainViewModel(): MainViewModel {
         val pref = TokenPreference.getInstance(application.dataStore)
         val factory = TokenFactory(pref)
         return ViewModelProvider(this, factory)[MainViewModel::class.java]

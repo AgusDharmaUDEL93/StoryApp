@@ -1,6 +1,7 @@
 package com.udeldev.storyapp.controller.adapter
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.core.util.Pair
+import androidx.core.app.ActivityOptionsCompat
 import com.udeldev.storyapp.R
 import com.udeldev.storyapp.model.response.ListStoryItem
 import com.bumptech.glide.Glide
@@ -46,7 +49,14 @@ class StoryListAdapter : RecyclerView.Adapter<StoryListAdapter.StoryListViewHold
         holder.itemView.setOnClickListener {
             val moveIntent = Intent(holder.itemView.context, DetailActivity::class.java)
             moveIntent.putExtra(DetailActivity.EXTRA_ID, _storyList?.get(position)?.id)
-            holder.itemView.context.startActivity(moveIntent)
+            val optionsCompat: ActivityOptionsCompat =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    holder.itemView.context as Activity,
+                    Pair(holder.imageStoryList, "image_detail_story"),
+                    Pair(holder.titleStoryList, "text_detail_title"),
+                    Pair(holder.descStoryList, "text_detail_desc"),
+                )
+            holder.itemView.context.startActivity(moveIntent, optionsCompat.toBundle())
         }
     }
 }

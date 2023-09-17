@@ -108,7 +108,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            app:helperTextTextColor="@color/error"
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"

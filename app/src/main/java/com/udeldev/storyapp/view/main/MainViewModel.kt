@@ -34,6 +34,10 @@ class MainViewModel (private val pref : TokenPreference) :ViewModel() {
         }
     }
 
+    init {
+        getAllDataStory()
+    }
+
     fun getAllDataStory (){
         _isLoading.value = true
 
