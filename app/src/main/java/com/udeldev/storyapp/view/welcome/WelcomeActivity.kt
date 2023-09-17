@@ -27,9 +27,11 @@ class WelcomeActivity : AppCompatActivity() {
 
         activityWelcomeBinding.buttonWelcomeToLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
         activityWelcomeBinding.buttonWelcomeToRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

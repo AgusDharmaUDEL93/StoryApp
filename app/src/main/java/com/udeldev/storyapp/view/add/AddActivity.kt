@@ -4,11 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.udeldev.storyapp.databinding.ActivityAddBinding
 import com.udeldev.storyapp.helper.TokenPreference
@@ -63,6 +66,10 @@ class AddActivity : AppCompatActivity() {
             currentImageUri?.let { uri ->
                 val description = activityAddBinding.editAddDesc.text.toString()
                 val imageFile = uriToFile(uri, this).reduceFileImage()
+                if (description.isEmpty()){
+                    Toast.makeText(this, "Description can't be empty", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
                 val requestBody = description.toRequestBody("text/plain".toMediaType())
                 val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())

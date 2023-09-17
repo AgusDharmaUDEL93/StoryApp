@@ -68,6 +68,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_login_desc"/>
 
+
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edit_login_email_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -80,14 +81,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_login_email_label"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
+                <com.udeldev.storyapp.widgets.edit.EmailEditText
+                        android:id="@+id/edit_login_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="SpeakableTextPresentCheck"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_login_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -115,13 +116,15 @@
             app:layout_constraintTop_toBottomOf="@+id/text_login_password_label"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.udeldev.storyapp.widgets.edit.PasswordEditText
                 android:id="@+id/edit_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck"/>
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

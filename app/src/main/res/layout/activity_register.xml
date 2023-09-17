@@ -100,7 +100,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_register_email_label"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.udeldev.storyapp.widgets.edit.EmailEditText
                 android:id="@+id/edit_register_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_register_password_label"
             app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.udeldev.storyapp.widgets.edit.PasswordEditText
                 android:id="@+id/edit_register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

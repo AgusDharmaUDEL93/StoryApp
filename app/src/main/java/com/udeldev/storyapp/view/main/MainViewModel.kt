@@ -35,13 +35,12 @@ class MainViewModel (private val pref : TokenPreference) :ViewModel() {
     }
 
     init {
-        getAllDataStory()
+        val token = runBlocking { pref.getToken().first() }
+        getAllDataStory(token)
     }
 
-    fun getAllDataStory (){
+    private fun getAllDataStory (token :String){
         _isLoading.value = true
-
-        val token = runBlocking { pref.getToken().first() }
         val client = ConfigData.getApiService(token).getAllStory()
         client.enqueue(object : Callback<AllStoryResponse>{
             override fun onResponse(call: Call<AllStoryResponse>, response: Response<AllStoryResponse>) {

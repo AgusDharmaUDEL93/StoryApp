@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
@@ -21,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var activityLoginBinding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
-    private var isError :Boolean? = null
+    private var isError: Boolean? = null
 
 
     private fun initComponent() {
@@ -38,35 +39,24 @@ class LoginActivity : AppCompatActivity() {
             showLoading(it)
         }
 
-        activityLoginBinding.editLoginPassword.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        activityLoginBinding.editLoginPassword.message.observe(this) {
+            activityLoginBinding.editLoginPasswordLayout.error = it
+        }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                activityLoginBinding.editLoginPasswordLayout.error = validPassword(s.toString())
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-
-        })
-
-        activityLoginBinding.editLoginEmail.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                activityLoginBinding.editLoginEmailLayout.error = validEmail(s.toString())
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        })
+        activityLoginBinding.editLoginEmail.message.observe(this) {
+            activityLoginBinding.editLoginEmailLayout.error = it
+        }
 
         activityLoginBinding.buttonLogin.setOnClickListener {
-            activityLoginBinding.editLoginEmailLayout.error =
-                validEmail(activityLoginBinding.editLoginEmail.text.toString())
-            activityLoginBinding.editLoginPasswordLayout.error =
-                validPassword(activityLoginBinding.editLoginPassword.text.toString())
-            if(activityLoginBinding.editLoginEmailLayout.error != null || activityLoginBinding.editLoginPasswordLayout.error != null
+
+            if (activityLoginBinding.editLoginEmail.text.isNullOrEmpty()){
+                activityLoginBinding.editLoginEmailLayout.error = "Can't be empty"
+            }
+            if (activityLoginBinding.editLoginPassword.text.isNullOrEmpty()){
+                activityLoginBinding.editLoginPasswordLayout.error = "Can't be empty"
+            }
+
+            if (activityLoginBinding.editLoginEmailLayout.error != null || activityLoginBinding.editLoginPasswordLayout.error != null
             ) {
                 Toast.makeText(this, "Please insert the valid data", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -76,11 +66,11 @@ class LoginActivity : AppCompatActivity() {
                 activityLoginBinding.editLoginPassword.text.toString()
             )
 
-            loginViewModel.isError.observe(this){
+            loginViewModel.isError.observe(this) {
                 isError = it
             }
             loginViewModel.isLoading.observe(this) {
-                if (isError == true){
+                if (isError == true) {
                     AlertDialog.Builder(this).apply {
                         setTitle("Message")
                         setMessage("Can't Login, please check your data again")

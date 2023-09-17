@@ -33,36 +33,21 @@ class RegisterActivity : AppCompatActivity() {
             showLoading(it)
         }
 
-        activityRegisterBinding.editRegisterPassword.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        activityRegisterBinding.editRegisterPassword.message.observe(this) {
+            activityRegisterBinding.editRegisterPasswordLayout.error = it
+        }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                activityRegisterBinding.editRegisterPasswordLayout.error = validPassword(s.toString())
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-
-        })
-
-        activityRegisterBinding.editRegisterEmail.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                activityRegisterBinding.editRegisterEmailLayout.error = validEmail(s.toString())
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        })
-
-
+        activityRegisterBinding.editRegisterEmail.message.observe(this) {
+            activityRegisterBinding.editRegisterEmailLayout.error = it
+        }
 
         activityRegisterBinding.buttonRegister.setOnClickListener {
-            activityRegisterBinding.editRegisterEmailLayout.error =
-                validEmail(activityRegisterBinding.editRegisterEmail.text.toString())
-            activityRegisterBinding.editRegisterPasswordLayout.error =
-                validPassword(activityRegisterBinding.editRegisterPassword.text.toString())
+            if (activityRegisterBinding.editRegisterEmail.text.isNullOrEmpty()){
+                activityRegisterBinding.editRegisterEmailLayout.error = "Can't be empty"
+            }
+            if (activityRegisterBinding.editRegisterPassword.text.isNullOrEmpty()){
+                activityRegisterBinding.editRegisterPasswordLayout.error = "Can't be empty"
+            }
 
             if (activityRegisterBinding.editRegisterEmailLayout.error != null || activityRegisterBinding.editRegisterPasswordLayout.error != null){
                 Toast.makeText(this, "Please insert the valid data", Toast.LENGTH_SHORT).show()

@@ -29,7 +29,6 @@ class LoginViewModel(private val pref: TokenPreference) : ViewModel() {
         _isLoading.value = false
     }
 
-
     fun loginUser(email: String, password: String) {
         _isLoading.value = true
         val client = ConfigAuth.getApiService().loginAuth(email, password)
