@@ -36,7 +36,9 @@ class MainViewModel (private val pref : TokenPreference) :ViewModel() {
 
     init {
         val token = runBlocking { pref.getToken().first() }
-        getAllDataStory(token)
+        if (token.isNotEmpty()){
+            getAllDataStory(token)
+        }
     }
 
     private fun getAllDataStory (token :String){
